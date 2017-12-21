@@ -1,5 +1,8 @@
 <?php 
-
+/**
+ *  遍历树的非递归实现 
+ *  关键是模拟栈 
+ */
 $tree = [
   ['id' => 1, 'name' => 'baseketball', 'pid' => 0, 'children' => [
       ['id' => 2, 'name' => 'baseketballshose', 'pid' => 1, 'children' => [
@@ -17,13 +20,13 @@ $tree = [
 
 $list = [];
 
-
 while (!empty($tree)) {
-  $node = array_shift($tree);
+  $node = array_shift($tree); // 首元素出栈
   if (isset($node['children']) && !empty($node['children'])) {
-      $children = array_reverse($node['children']);
-      foreach ($children as $item) {
-        array_unshift($tree,$item);      
+      //儿子元素倒序入栈，
+      $children_len = count($node['children']); 
+      for ($i = $children_len - 1; $i >= 0; $i--) {
+        array_unshift($tree,$node['children'][$i]);      
       }
   }
   unset($node['children']);

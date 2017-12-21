@@ -1,5 +1,7 @@
 <?php 
-  
+  /**
+   * 数组的行列转换
+   */
   $rows = [
     ['rowA1', 'rowB1','rowC1','rowD1'],
     ['rowA2', 'rowB2','rowC2','rowD2'],
@@ -9,7 +11,8 @@
   ];
 
   $clo = [];
-  
+    
+    // 利用双重循环互换索引
     foreach ($rows as $r => $row) {
       foreach ($row as $key => $item) {
           $clo[$key][$r] = $item;
