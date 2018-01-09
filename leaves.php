@@ -27,4 +27,4 @@ foreach ($cateList as $key => $cate) {
   } 
 }
 
-print_r($cateList);
+print_r(array_column($cateList, 'name', 'id'));
